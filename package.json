@@ -30,6 +30,6 @@
     "tape": "^5.5.3"
   },
   "dependencies": {
-    "@enhance/css-parser": "^1.0.0"
+    "@enhance/css-parser": "https://github.com/enhance-dev/css-parser/tree/wasm-compat"
   }
 }
