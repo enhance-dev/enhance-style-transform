@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/enhance-dev/enhance-style-transform#readme",
   "devDependencies": {
-    "@architect/functions": "^5.0.1",
+    "@architect/functions": "^8.0.3",
     "@architect/sandbox": "^5.2.5",
     "@enhance/ssr": "^2.3.5",
     "@playwright/test": "^1.24.1",
@@ -30,6 +30,8 @@
     "tape": "^5.5.3"
   },
   "dependencies": {
-    "@enhance/css-parser": "^1.0.0"
+    "postcss": "^8.4.35",
+    "postcss-preset-env": "^9.3.0",
+    "postcss-prettify": "^0.3.4"
   }
 }
