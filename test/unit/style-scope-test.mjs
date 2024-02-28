@@ -39,7 +39,7 @@ test('default component scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag div {
   background: blue;
 }`
@@ -54,7 +54,7 @@ test('@container rules scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `@container (min-inline-size: 48em) {
   my-tag div {
     background: blue;
@@ -71,7 +71,7 @@ test('@media rules scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `@media (min-inline-size: 48em) {
   my-tag div {
     background: blue;
@@ -88,7 +88,7 @@ test('@supports rules scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `@supports (display: block) {
   my-tag div {
     background: blue;
@@ -105,7 +105,7 @@ test('default component scoped in template context', (t) => {
     tagName: 'my-tag',
     context: 'template',
     raw: block
-  })
+  }).trim()
   const expected = `div { background:blue; }`
   t.equal(expected, result, 'template context')
 })
@@ -126,7 +126,7 @@ test('template context with shadow selectors should not change', (t) => {
     tagName: 'my-tag',
     context: 'template',
     raw: block
-  })
+  }).trim()
   const expected = block
   t.equal(expected, result, 'shadow CSS same in template')
 })
@@ -147,7 +147,7 @@ test('ssr context with special selectors', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag {
   background: blue;
 }
@@ -178,7 +178,7 @@ test(':host pseudo element', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag div {
   background: blue;
 }`
@@ -193,7 +193,7 @@ test(':host() function form', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag.something div {
   background: blue;
 }`
@@ -209,7 +209,7 @@ test(':host-context() function form', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `.something my-tag div {
   background: blue;
 }`

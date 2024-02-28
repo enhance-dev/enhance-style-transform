@@ -30,8 +30,9 @@
     "tape": "^5.5.3"
   },
   "dependencies": {
+    "@enhance/postcss-prettify": "^0.4.1",
+    "@enhance/postcss-shady-selectors": "^1.0.1",
     "postcss": "^8.4.35",
-    "postcss-preset-env": "^9.3.0",
-    "postcss-prettify": "^0.3.4"
+    "postcss-preset-env": "^9.3.0"
   }
 }

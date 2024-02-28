@@ -1,7 +1,7 @@
 import postcss from 'postcss'
 import preset from 'postcss-preset-env'
-import enhance from './postcss-enhance.mjs'
-import prettify from 'postcss-prettify'
+import shady from '@enhance/postcss-shady-selectors'
+import prettify from '@enhance/postcss-prettify'
 
 export default function styleTransform(options) {
   const { attrs = [], raw = '', tagName = '', context = '' } = options
@@ -27,7 +27,7 @@ export default function styleTransform(options) {
 
     return postcss([
       preset({ stage: 4 }),
-      enhance({ scopeTo }),
+      shady({ scopeTo }),
       prettify()
     ])
       .process(css, { from: 'undefined' })
