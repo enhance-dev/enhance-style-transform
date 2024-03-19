@@ -1,7 +1,7 @@
 import styleTransform from '../../src/style-transform.mjs'
 import test from 'tape'
-const globalAttrs = [{name:'scope',value:'global'}]
-const transform = ({ raw='', attrs, context='', tagName='my-tag' } = {})=>styleTransform({raw,attrs,context,tagName})
+const globalAttrs = [{ name: 'scope', value: 'global' }]
+const transform = ({ raw = '', attrs, context = '', tagName = 'my-tag' } = {}) => styleTransform({ raw, attrs, context, tagName })
 
 test('global in ssr context', (t) => {
   t.plan(1)
@@ -13,8 +13,8 @@ test('global in ssr context', (t) => {
     context: 'markup',
     raw: block
   })
-  const expected = `div { background:blue; }` 
-  t.equal(expected,result,'it works')
+  const expected = `div { background:blue; }`
+  t.equal(expected, result, 'it works')
 })
 
 test('global in template context', (t) => {
@@ -27,8 +27,8 @@ test('global in template context', (t) => {
     context: 'template',
     raw: block
   })
-  const expected = `` 
-  t.equal(expected,result,'it works')
+  const expected = ``
+  t.equal(expected, result, 'it works')
 })
 
 test('default component scoped in ssr context', (t) => {
@@ -39,11 +39,11 @@ test('default component scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag div {
   background: blue;
-}` 
-  t.equal(expected,result,'basic SSR context')
+}`
+  t.equal(expected, result, 'basic SSR context')
 })
 
 test('@container rules scoped in ssr context', (t) => {
@@ -54,13 +54,13 @@ test('@container rules scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `@container (min-inline-size: 48em) {
   my-tag div {
     background: blue;
   }
-}` 
-  t.equal(expected,result,'SSR context')
+}`
+  t.equal(expected, result, 'SSR context')
 })
 
 test('@media rules scoped in ssr context', (t) => {
@@ -71,13 +71,13 @@ test('@media rules scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `@media (min-inline-size: 48em) {
   my-tag div {
     background: blue;
   }
-}` 
-  t.equal(expected,result,'SSR context')
+}`
+  t.equal(expected, result, 'SSR context')
 })
 
 test('@supports rules scoped in ssr context', (t) => {
@@ -88,13 +88,13 @@ test('@supports rules scoped in ssr context', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `@supports (display: block) {
   my-tag div {
     background: blue;
   }
-}` 
-  t.equal(expected,result,'SSR context')
+}`
+  t.equal(expected, result, 'SSR context')
 })
 
 test('default component scoped in template context', (t) => {
@@ -105,9 +105,9 @@ test('default component scoped in template context', (t) => {
     tagName: 'my-tag',
     context: 'template',
     raw: block
-  })
-  const expected = `div { background:blue; }` 
-  t.equal(expected,result,'template context')
+  }).trim()
+  const expected = `div { background:blue; }`
+  t.equal(expected, result, 'template context')
 })
 
 test('template context with shadow selectors should not change', (t) => {
@@ -126,9 +126,9 @@ test('template context with shadow selectors should not change', (t) => {
     tagName: 'my-tag',
     context: 'template',
     raw: block
-  })
+  }).trim()
   const expected = block
-  t.equal(expected,result,'shadow CSS same in template')
+  t.equal(expected, result, 'shadow CSS same in template')
 })
 
 test('ssr context with special selectors', (t) => {
@@ -147,7 +147,7 @@ test('ssr context with special selectors', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag {
   background: blue;
 }
@@ -166,8 +166,8 @@ my-tag .foo {
 
 my-tag another-tag [part*="thing"][part*="another-tag"] {
   display: block;
-}` 
-  t.equal(expected,result,'shadow CSS transformed for SSR')
+}`
+  t.equal(expected, result, 'shadow CSS transformed for SSR')
 })
 
 test(':host pseudo element', (t) => {
@@ -178,11 +178,11 @@ test(':host pseudo element', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag div {
   background: blue;
-}` 
-  t.equal(expected,result,'basic :host')
+}`
+  t.equal(expected, result, 'basic :host')
 })
 
 test(':host() function form', (t) => {
@@ -193,11 +193,11 @@ test(':host() function form', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `my-tag.something div {
   background: blue;
-}` 
-  t.equal(expected,result,':host() works')
+}`
+  t.equal(expected, result, ':host() works')
 })
 
 
@@ -209,11 +209,11 @@ test(':host-context() function form', (t) => {
     tagName: 'my-tag',
     context: 'markup',
     raw: block
-  })
+  }).trim()
   const expected = `.something my-tag div {
   background: blue;
-}` 
-  t.equal(expected,result,':host-context()')
+}`
+  t.equal(expected, result, ':host-context()')
 })
 
 
@@ -232,8 +232,8 @@ test.skip(':host() with selector list', (t) => {
   const expected = `my-tag.something div,
   my-tag[some=thing] div {
     background:blue; 
-}` 
-  t.equal(expected,result,':host() with list')
+}`
+  t.equal(expected, result, ':host() with list')
 })
 
 //Not supported Yet
@@ -249,8 +249,8 @@ test.skip(':host-context() with selector list', (t) => {
   const expected = `.something my-tag div, 
   [some=thing] my-tag div {
     background: blue;
-  }` 
-  t.equal(expected,result,':host-context() with list')
+  }`
+  t.equal(expected, result, ':host-context() with list')
 })
 
 //Not supported yet
@@ -266,8 +266,8 @@ test.skip('::slotted() with selector list', (t) => {
   const expected = `my-tag .something div, 
   [some=thing] my-tag div {
     background: blue;
-  }` 
-  t.equal(expected,result,'::slotted() with list')
+  }`
+  t.equal(expected, result, '::slotted() with list')
 })
 
 
