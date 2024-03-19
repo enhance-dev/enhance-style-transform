@@ -1,5 +1,5 @@
 import postcss from 'postcss'
-import preset from 'postcss-preset-env'
+import nesting from 'postcss-nesting'
 import shady from '@enhance/postcss-shady-selectors'
 import prettify from '@enhance/postcss-prettify'
 
@@ -26,7 +26,7 @@ export default function styleTransform(options) {
     }
 
     return postcss([
-      preset({ stage: 4 }),
+      nesting(),
       shady({ scopeTo }),
       prettify()
     ])
