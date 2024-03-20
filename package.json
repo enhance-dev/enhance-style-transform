@@ -31,8 +31,7 @@
   },
   "dependencies": {
     "@enhance/postcss-prettify": "^0.4.1",
-    "@enhance/postcss-shady-selectors": "^1.0.2",
-    "postcss": "^8.4.37",
-    "postcss-nesting": "^12.1.0"
+    "@enhance/postcss-shady-selectors": "^1.2.0",
+    "postcss": "^8.4.37"
   }
 }

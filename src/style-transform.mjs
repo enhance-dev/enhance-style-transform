@@ -1,5 +1,4 @@
 import postcss from 'postcss'
-import nesting from 'postcss-nesting'
 import shady from '@enhance/postcss-shady-selectors'
 import prettify from '@enhance/postcss-prettify'
 
@@ -26,7 +25,6 @@ export default function styleTransform(options) {
     }
 
     return postcss([
-      nesting(),
       shady({ scopeTo }),
       prettify()
     ])
